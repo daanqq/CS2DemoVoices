@@ -11,17 +11,17 @@ const Footer = () => {
           <p className="inline">{i18next.t('madeBy')}</p>
           <Button variant="link" className="p-1">
             <a
-              href="https://github.com/neandreev"
+              href="https://github.com/daanqq"
               target="_blank"
               rel="noopener noreferrer"
             >
-              @neandreev
+              @daanqq
             </a>
           </Button>
         </div>
         <Button variant="link" className="p-1">
           <a
-            href="https://github.com/neandreev/CS2DemoVoices"
+            href="https://github.com/daanqq/CS2DemoVoices"
             target="_blank"
             rel="noopener noreferrer"
           >
