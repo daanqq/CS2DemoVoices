@@ -1,13 +1,10 @@
 export const generateResultString = (stringToParse: string) => {
-  const specNumbers = stringToParse.match(/-?\d+(\.\d+)?/g)?.map(Number);
+  const specValues = stringToParse.match(/-?\d+(\.\d+)?/g);
 
-  if (!specNumbers) {
-    return ''
-  }
+  if (!specValues) return ''
 
-  const indicesNumbers = specNumbers.map((number) => number - 1)
-  const indicesValue = [...indicesNumbers].reduce(
-    (playerValuesSum, playerValue) => playerValuesSum + 2 ** playerValue,
+  const indicesValue = [...specValues].reduce(
+    (specValuesSum, specValue) => specValuesSum + 2 ** (Number(specValue) - 1),
     0
   )
 

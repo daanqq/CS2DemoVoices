@@ -44,6 +44,7 @@ const PlayersInput = () => {
         </CardHeader>
         <CardContent className="flex flex-col gap-2">
           <Input
+            autoFocus
             className="resize-none"
             placeholder={placeholder}
             value={stringToParse}
