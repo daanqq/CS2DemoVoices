@@ -3,7 +3,7 @@ export const generateResultString = (stringToParse: string) => {
 
   if (!specValues) return ''
 
-  const indicesValue = [...specValues].reduce(
+  const indicesValue = [...new Set(specValues)].reduce(
     (specValuesSum, specValue) => specValuesSum + 2 ** (Number(specValue) - 1),
     0
   )
