@@ -1,6 +1,7 @@
 import i18next from 'i18next'
 import { type ToastT, toast } from 'sonner'
 import { create } from 'zustand'
+import { generateResultString } from './utils'
 
 export enum AppState {
   Input,
@@ -17,7 +18,7 @@ export interface StoreState {
   setLatestToastId: (latestToastId: ToastT['id']) => void
   showToast: (text: string) => void
   dismissLatestToast: () => void
-  generateResultString: () => void
+  updateResultString: () => void
   goToNextPage: () => void
   goToPreviousPage: () => void
   goToInputPage: () => void
@@ -29,9 +30,6 @@ export interface StoreState {
 export const useStore = create<StoreState>((set, get) => ({
   appState: AppState.Input,
   stringToParse: '',
-  isPlayerNeeded: true,
-  playerName: '',
-  selectedValues: new Set([]),
   resultString: '',
   latestToastId: null,
   setAppState: (appState) => set({ appState }),
@@ -48,23 +46,10 @@ export const useStore = create<StoreState>((set, get) => ({
 
     if (latestToastId) toast.dismiss(latestToastId)
   },
-  generateResultString: () => {
-    const stringToParse = get().stringToParse
-    const specNumbers = stringToParse.match(/-?\d+(\.\d+)?/g)?.map(Number);
+  updateResultString: () => {
+    const resultString = generateResultString(get().stringToParse)
 
-    if (!specNumbers) {
-      set({ resultString: '' })
-
-      return
-    }
-
-    const indicesNumbers = specNumbers.map((number) => number - 1)
-    const indicesValue = [...indicesNumbers].reduce(
-      (playerValuesSum, playerValue) => playerValuesSum + 2 ** playerValue,
-      0
-    )
-
-    set({ resultString: `tv_listen_voice_indices ${indicesValue}` })
+    set({ resultString })
   },
   goToNextPage: () => {
     const appState = get().appState
@@ -93,7 +78,7 @@ export const useStore = create<StoreState>((set, get) => ({
     })
   },
   goToResultPage: () => {
-    get().generateResultString()
+    get().updateResultString()
     get().dismissLatestToast()
 
     if (!get().resultString) {
