@@ -45,7 +45,7 @@ i18next.use(LanguageDetector).init({
         instructionsStep1: '1. Откройте демо',
         instructionsStep2: '2. Используйте консольные команды \'spec_player 1\', \'spec_player 2\', \'spec_player 3\' и т.д. для переключения между игроками',
         instructionsStep3: '3. Запомните spec_player ID игроков, голоса которых хотите слышать',
-        instructionsStep4: '4. Введите эти ID в поле ниже в произвольном порядке',
+        instructionsStep4: '4. Введите эти spec_player ID в поле ниже в произвольном порядке',
         atLeastOne: 'Введите хотя бы один номер spec_player',
         result: 'Итоговая команда',
         resultDesc: 'Используй её в консоли',
