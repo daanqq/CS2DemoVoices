@@ -5,14 +5,16 @@ import { AnimatePresence, MotionConfig, motion } from 'motion/react'
 import Footer from '@/components/Footer'
 import ModeToggle from '@/components/ModeToggle'
 import PlayersInput from '@/components/PlayersInput'
-import PlayersSelect from '@/components/PlayersSelect'
 import Result from '@/components/Result'
 import { Button } from '@/components/ui/button'
-import { AppState, useStore } from '@/store'
+import { useStore, AppState } from '@/store'
 import { ThemeProvider } from '@/themeProvider'
+import useKeyboard from '@/hooks/useKeyboard'
 
 const App = () => {
   const { appState, goToInputPage, goToPreviousPage, goToNextPage } = useStore()
+
+  useKeyboard()
 
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
@@ -37,7 +39,7 @@ const App = () => {
                           onClick={() => goToPreviousPage()}
                         >
                           <ArrowLeft />
-                          {i18next.t('back')}
+                          {`${i18next.t('back')} (Esc)`}
                         </Button>
                       </motion.div>
                     )}
@@ -72,7 +74,7 @@ const App = () => {
                         onClick={() => goToNextPage()}
                       >
                         <ArrowRight />
-                        {i18next.t('next')}
+                        {`${i18next.t('next')} (Enter)`}
                       </Button>
                     </motion.div>
                   )}
@@ -82,7 +84,6 @@ const App = () => {
             <div className="h-120">
               <AnimatePresence initial={false} mode="wait">
                 {appState === AppState.Input && <PlayersInput key="playersSelectCard" />}
-                {appState === AppState.Select && <PlayersSelect key="playersInputCard" />}
                 {appState === AppState.Result && <Result key="resultCard" />}
               </AnimatePresence>
             </div>

@@ -34,7 +34,7 @@ const Result = () => {
             spellCheck={false}
           />
           <Button variant="outline" onClick={() => copyResult()}>
-            {i18next.t('copy')}
+            {`${i18next.t('copy')} (Enter)`}
           </Button>
         </CardContent>
       </Card>
