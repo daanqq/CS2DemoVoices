@@ -1,0 +1,20 @@
+{
+  "translation": {
+    "next": "Далее",
+    "copy": "Скопировать",
+    "again": "Начать заново",
+    "back": "Назад",
+    "copied": "Команда скопирована",
+    "placeholder": "\"2, 8, 5, 4, 6\" или \"2 8 5 4 6\"",
+    "instructionsTitle": "Как использовать приложение:",
+    "instructionsStep1": "1. Откройте демо",
+    "instructionsStep2": "2. Используйте консольные команды 'spec_player 1', 'spec_player 2', 'spec_player 3' и т.д. для переключения между игроками",
+    "instructionsStep3": "3. Запомните spec_player ID игроков, голоса которых хотите слышать",
+    "instructionsStep4": "4. Введите эти spec_player ID в поле ниже в произвольном порядке",
+    "atLeastOne": "Введите хотя бы один номер spec_player",
+    "result": "Итоговая команда",
+    "resultDesc": "Используй её в консоли",
+    "madeBy": "cделал",
+    "sourceCode": "исходный_код"
+  }
+}
