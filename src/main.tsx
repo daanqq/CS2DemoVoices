@@ -6,7 +6,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 import App from "@/App";
-import { Toaster } from "@/components/ui/sonner";
 import en from "./i18n/en.json";
 import ru from "./i18n/ru.json";
 import "./index.css";
@@ -21,6 +20,5 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <Analytics />
     <SpeedInsights />
     <App />
-    <Toaster position="top-center" />
   </React.StrictMode>,
 );
