@@ -15,11 +15,9 @@ interface IThemeProvider {
 }
 
 export const ThemeProvider = ({ children }: IThemeProvider) => {
-  const [theme, setTheme] = useState<Theme>(() =>
-    (localStorage.getItem("vite-ui-theme") as Theme) ||
-    window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light",
+  const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  const [theme, setTheme] = useState<Theme>(
+    () => (localStorage.getItem("vite-ui-theme") as Theme) || systemTheme,
   );
 
   useEffect(() => {
