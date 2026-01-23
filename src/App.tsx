@@ -1,4 +1,3 @@
-import i18next from "i18next";
 import { ArrowLeft, ArrowRight, RefreshCcw } from "lucide-react";
 
 import Footer from "@/components/Footer";
@@ -12,7 +11,7 @@ import { AppState, useStore } from "@/store";
 import { ThemeProvider } from "@/themeProvider";
 
 const App = () => {
-  const { appState, goToInputPage, goToPreviousPage, goToNextPage } = useStore();
+  const { i18n, appState, goToInputPage, goToPreviousPage, goToNextPage } = useStore();
 
   useKeyboard();
 
@@ -27,20 +26,20 @@ const App = () => {
               {appState !== AppState.Input && (
                 <Button variant="outline" className="w-fit" onClick={() => goToPreviousPage()}>
                   <ArrowLeft />
-                  {`${i18next.t("back")} (Esc)`}
+                  {`${i18n.t("back")} (Esc)`}
                 </Button>
               )}
               {appState !== AppState.Input && (
                 <Button variant="outline" className="w-fit" onClick={() => goToInputPage()}>
                   <RefreshCcw />
-                  {i18next.t("again")}
+                  {i18n.t("again")}
                 </Button>
               )}
             </div>
             {appState !== AppState.Result && (
               <Button variant="outline" className="w-fit" onClick={() => goToNextPage()}>
                 <ArrowRight />
-                {`${i18next.t("next")} (Enter)`}
+                {`${i18n.t("next")} (Enter)`}
               </Button>
             )}
           </div>

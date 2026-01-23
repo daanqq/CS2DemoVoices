@@ -1,6 +1,6 @@
-import i18next from "i18next";
 import { type ToastT, toast } from "sonner";
 import { create } from "zustand";
+import i18n from "./i18n";
 import { generateResultString } from "./utils";
 
 export enum AppState {
@@ -13,6 +13,7 @@ export interface StoreState {
   stringToParse: string;
   resultString: string;
   latestToastId: ToastT["id"] | null;
+  i18n: ReturnType<typeof i18n>;
   setAppState: (appState: AppState) => void;
   setStringToParse: (stringToParse: string) => void;
   setLatestToastId: (latestToastId: ToastT["id"]) => void;
@@ -32,11 +33,12 @@ export const useStore = create<StoreState>((set, get) => ({
   stringToParse: "",
   resultString: "",
   latestToastId: null,
+  i18n: i18n(),
   setAppState: (appState) => set({ appState }),
   setStringToParse: (stringToParse) => set({ stringToParse }),
   setLatestToastId: (latestToastId) => set({ latestToastId }),
   showToast: (text) => {
-    const latestToastId = toast.success(i18next.t(text));
+    const latestToastId = toast.success(get().i18n.t(text));
 
     get().dismissLatestToast();
     get().setLatestToastId(latestToastId);
