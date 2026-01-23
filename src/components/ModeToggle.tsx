@@ -1,22 +1,22 @@
-import { Moon, Sun } from 'lucide-react'
+import { Moon, Sun } from "lucide-react";
 
-import { Button } from '@/components/ui/button'
-import { type Theme, useTheme } from '@/theme'
+import { Button } from "@/components/ui/button";
+import { type Theme, useTheme } from "@/theme";
 
 const iconByTheme = {
   dark: <Sun />,
   light: <Moon />,
-  system: <Sun />
-}
+  system: <Sun />,
+};
 
 const oppositeTheme: Record<Theme, Theme> = {
-  dark: 'light',
-  light: 'dark',
-  system: 'system'
-}
+  dark: "light",
+  light: "dark",
+  system: "system",
+};
 
 const ModeToggle = () => {
-  const { theme, setTheme } = useTheme()
+  const { theme, setTheme } = useTheme();
 
   return (
     <Button
@@ -26,7 +26,7 @@ const ModeToggle = () => {
     >
       {iconByTheme[theme]}
     </Button>
-  )
-}
+  );
+};
 
-export default ModeToggle
+export default ModeToggle;

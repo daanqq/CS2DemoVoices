@@ -1,12 +1,12 @@
 export const generateResultString = (stringToParse: string) => {
   const specValues = stringToParse.match(/-?\d+(\.\d+)?/g);
 
-  if (!specValues) return ''
+  if (!specValues) return "";
 
   const indicesValue = [...new Set(specValues)].reduce(
     (specValuesSum, specValue) => specValuesSum + 2 ** (Number(specValue) - 1),
-    0
-  )
+    0,
+  );
 
-  return `tv_listen_voice_indices ${indicesValue}`
-}
+  return `tv_listen_voice_indices ${indicesValue}`;
+};

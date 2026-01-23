@@ -1,29 +1,29 @@
-import i18next from 'i18next'
-import { ArrowLeft, ArrowRight, RefreshCcw } from 'lucide-react'
-import { AnimatePresence, MotionConfig, motion } from 'motion/react'
+import i18next from "i18next";
+import { ArrowLeft, ArrowRight, RefreshCcw } from "lucide-react";
+import { AnimatePresence, MotionConfig, motion } from "motion/react";
 
-import Footer from '@/components/Footer'
-import ModeToggle from '@/components/ModeToggle'
-import PlayersInput from '@/components/PlayersInput'
-import Result from '@/components/Result'
-import { Button } from '@/components/ui/button'
-import { useStore, AppState } from '@/store'
-import { ThemeProvider } from '@/themeProvider'
-import useKeyboard from '@/hooks/useKeyboard'
+import Footer from "@/components/Footer";
+import ModeToggle from "@/components/ModeToggle";
+import PlayersInput from "@/components/PlayersInput";
+import Result from "@/components/Result";
+import { Button } from "@/components/ui/button";
+import useKeyboard from "@/hooks/useKeyboard";
+import { AppState, useStore } from "@/store";
+import { ThemeProvider } from "@/themeProvider";
 
 const App = () => {
-  const { appState, goToInputPage, goToPreviousPage, goToNextPage } = useStore()
+  const { appState, goToInputPage, goToPreviousPage, goToNextPage } = useStore();
 
-  useKeyboard()
+  useKeyboard();
 
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <MotionConfig transition={{ duration: 0.1, ease: 'easeInOut' }}>
+      <MotionConfig transition={{ duration: 0.1, ease: "easeInOut" }}>
         <div className="absolute inset-0 -z-10 bg-[url(/background.png)] bg-center dark:brightness-10 brightness-50 dark:contrast-100 contrast-75" />
         <div className="font-play h-screen flex flex-col items-center justify-center">
           <div className="flex w-120 flex-grow flex-col justify-center gap-4">
             <div className="flex justify-between gap-2 w-full">
-              <MotionConfig transition={{ duration: 0.2, ease: 'easeInOut' }}>
+              <MotionConfig transition={{ duration: 0.2, ease: "easeInOut" }}>
                 <div className="flex gap-2">
                   <ModeToggle />
                   <AnimatePresence>
@@ -39,7 +39,7 @@ const App = () => {
                           onClick={() => goToPreviousPage()}
                         >
                           <ArrowLeft />
-                          {`${i18next.t('back')} (Esc)`}
+                          {`${i18next.t("back")} (Esc)`}
                         </Button>
                       </motion.div>
                     )}
@@ -49,13 +49,9 @@ const App = () => {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                       >
-                        <Button
-                          variant="outline"
-                          className="w-fit"
-                          onClick={() => goToInputPage()}
-                        >
+                        <Button variant="outline" className="w-fit" onClick={() => goToInputPage()}>
                           <RefreshCcw />
-                          {i18next.t('again')}
+                          {i18next.t("again")}
                         </Button>
                       </motion.div>
                     )}
@@ -68,13 +64,9 @@ const App = () => {
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                     >
-                      <Button
-                        variant="outline"
-                        className="w-fit"
-                        onClick={() => goToNextPage()}
-                      >
+                      <Button variant="outline" className="w-fit" onClick={() => goToNextPage()}>
                         <ArrowRight />
-                        {`${i18next.t('next')} (Enter)`}
+                        {`${i18next.t("next")} (Enter)`}
                       </Button>
                     </motion.div>
                   )}
@@ -92,7 +84,7 @@ const App = () => {
         </div>
       </MotionConfig>
     </ThemeProvider>
-  )
-}
+  );
+};
 
-export default App
+export default App;
