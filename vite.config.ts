@@ -1,13 +1,13 @@
 import path from "node:path";
+import preact from "@preact/preset-vite";
 import tailwindcss from "@tailwindcss/vite";
-import react from "@vitejs/plugin-react";
 import { visualizer } from "rollup-plugin-visualizer";
 import { defineConfig } from "vite";
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
-    react(),
+    preact(),
     tailwindcss(),
     visualizer({
       filename: "./dist/stats.html",
