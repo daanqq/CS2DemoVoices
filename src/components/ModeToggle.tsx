@@ -1,29 +1,18 @@
 import { Moon, Sun } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { type Theme, useTheme } from "@/theme";
+import useTheme from "@/hooks/useTheme";
 
 const iconByTheme = {
   dark: <Sun />,
   light: <Moon />,
-  system: <Sun />,
-};
-
-const oppositeTheme: Record<Theme, Theme> = {
-  dark: "light",
-  light: "dark",
-  system: "system",
 };
 
 const ModeToggle = () => {
-  const { theme, setTheme } = useTheme();
+  const { theme, toggleTheme } = useTheme();
 
   return (
-    <Button
-      className="w-10"
-      aria-label="mode-toggle"
-      onClick={() => setTheme(oppositeTheme[theme])}
-    >
+    <Button className="w-10" aria-label="mode-toggle" onClick={toggleTheme}>
       {iconByTheme[theme]}
     </Button>
   );

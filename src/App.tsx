@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Toaster } from "@/components/ui/sonner";
 import useKeyboard from "@/hooks/useKeyboard";
 import { AppState, useStore } from "@/store";
-import { ThemeProvider } from "@/themeProvider";
+import { ThemeProvider } from "@/theme";
 
 const App = () => {
   const { i18n, appState, goToInputPage, goToPreviousPage, goToNextPage } = useStore();
@@ -16,7 +16,7 @@ const App = () => {
   useKeyboard();
 
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+    <ThemeProvider>
       <div className="absolute inset-0 -z-10 bg-[url(/background.png)] bg-center dark:brightness-10 brightness-50 dark:contrast-100 contrast-75" />
       <div className="font-play h-screen flex flex-col items-center justify-center">
         <div className="flex w-120 flex-grow flex-col justify-center gap-4">
