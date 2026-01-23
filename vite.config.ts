@@ -7,11 +7,7 @@ import { visualizer } from "rollup-plugin-visualizer"
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
-    react({
-      babel: {
-        plugins: [['babel-plugin-react-compiler', {}]]
-      }
-    }),
+    react(),
     tailwindcss(),
     visualizer({
       filename: './dist/stats.html',
