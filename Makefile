@@ -1,16 +1,14 @@
-i:
+install i:
 	pnpm i
-d:
+develop d:
 	pnpm run dev
-b:
+build b:
 	pnpm run build
-l:
-	pnpm run lint
-bl:
-	pnpm run babellint
-c:
+check c:
 	pnpm run check
-p:
+fix f:
+	pnpm run fix
+preview p:
 	pnpm run preview
-pb:
+buildpreview bp:
 	pnpm run build && pnpm run preview
