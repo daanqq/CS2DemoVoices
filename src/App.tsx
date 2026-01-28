@@ -17,7 +17,7 @@ const App = () => {
 
   return (
     <ThemeProvider>
-      <div className="absolute inset-0 -z-10 bg-[url(/background.png)] bg-center dark:brightness-10 brightness-50 dark:contrast-100 contrast-75" />
+      <div className="absolute inset-0 -z-10 bg-[url(/background.png)] bg-cover dark:brightness-10 brightness-50 dark:contrast-100 contrast-75" />
       <div className="font-play h-screen flex flex-col items-center justify-center">
         <div className="flex w-120 flex-grow flex-col justify-center gap-4">
           <div className="flex justify-between gap-2 w-full">
