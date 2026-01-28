@@ -5,7 +5,6 @@ import ModeToggle from "@/components/ModeToggle";
 import PlayersInput from "@/components/PlayersInput";
 import Result from "@/components/Result";
 import { Button } from "@/components/ui/button";
-import { Toaster } from "@/components/ui/sonner";
 import useKeyboard from "@/hooks/useKeyboard";
 import { AppState, useStore } from "@/store";
 import { ThemeProvider } from "@/theme";
@@ -50,7 +49,6 @@ const App = () => {
         </div>
         <Footer />
       </div>
-      <Toaster position="top-center" />
     </ThemeProvider>
   );
 };

@@ -1,9 +1,10 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Field, FieldDescription } from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
 import { useStore } from "@/store";
-import { Input } from "./ui/input";
 
 const PlayersInput = () => {
-  const { i18n, stringToParse, setStringToParse } = useStore();
+  const { i18n, isInputInvalid, stringToParse, setStringToParse } = useStore();
 
   return (
     <Card>
@@ -20,14 +21,18 @@ const PlayersInput = () => {
         </CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-2">
-        <Input
-          autoFocus
-          className="resize-none"
-          placeholder={i18n.t("placeholder")}
-          value={stringToParse}
-          spellCheck={false}
-          onChange={(e) => setStringToParse(e.currentTarget.value)}
-        />
+        <Field>
+          <Input
+            autoFocus
+            aria-invalid={isInputInvalid}
+            className="resize-none"
+            placeholder={i18n.t("placeholder")}
+            value={stringToParse}
+            spellCheck={false}
+            onChange={(e) => setStringToParse(e.currentTarget.value)}
+          />
+          {isInputInvalid && <FieldDescription>{i18n.t("atLeastOne")}</FieldDescription>}
+        </Field>
       </CardContent>
     </Card>
   );

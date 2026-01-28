@@ -1,53 +1,36 @@
-import { type ToastT, toast } from "sonner";
 import { create } from "zustand";
 import i18n from "./i18n";
 import { generateResultString } from "./utils";
 
 export enum AppState {
-  Input,
-  Result,
+  Input = 1,
+  Result = 2,
 }
 
 export interface StoreState {
   appState: AppState;
   stringToParse: string;
+  isInputInvalid: boolean;
   resultString: string;
-  latestToastId: ToastT["id"] | null;
+  isResultCopied: boolean;
   i18n: ReturnType<typeof i18n>;
-  setAppState: (appState: AppState) => void;
   setStringToParse: (stringToParse: string) => void;
-  setLatestToastId: (latestToastId: ToastT["id"]) => void;
-  showToast: (text: string) => void;
-  dismissLatestToast: () => void;
   updateResultString: () => void;
   goToNextPage: () => void;
   goToPreviousPage: () => void;
   goToInputPage: () => void;
   goToResultPage: () => void;
-  copyCommand: () => void;
   copyResult: () => void;
 }
 
 export const useStore = create<StoreState>((set, get) => ({
   appState: AppState.Input,
   stringToParse: "",
+  isInputInvalid: false,
   resultString: "",
-  latestToastId: null,
+  isResultCopied: false,
   i18n: i18n(),
-  setAppState: (appState) => set({ appState }),
-  setStringToParse: (stringToParse) => set({ stringToParse }),
-  setLatestToastId: (latestToastId) => set({ latestToastId }),
-  showToast: (text) => {
-    const latestToastId = toast.success(get().i18n.t(text));
-
-    get().dismissLatestToast();
-    get().setLatestToastId(latestToastId);
-  },
-  dismissLatestToast: () => {
-    const latestToastId = get().latestToastId;
-
-    if (latestToastId) toast.dismiss(latestToastId);
-  },
+  setStringToParse: (stringToParse) => set({ isInputInvalid: false, stringToParse }),
   updateResultString: () => {
     const resultString = generateResultString(get().stringToParse);
 
@@ -81,24 +64,18 @@ export const useStore = create<StoreState>((set, get) => ({
   },
   goToResultPage: () => {
     get().updateResultString();
-    get().dismissLatestToast();
 
     if (!get().resultString) {
-      get().showToast("atLeastOne");
+      set({ isInputInvalid: true });
 
       return;
     }
 
-    set({ appState: AppState.Result });
-  },
-  copyCommand: async () => {
-    await navigator.clipboard.writeText("voice_show_mute");
-
-    get().showToast("copied");
+    set({ isInputInvalid: false, appState: AppState.Result });
   },
   copyResult: async () => {
     await navigator.clipboard.writeText(get().resultString);
 
-    get().showToast("copied");
+    set({ isResultCopied: true });
   },
 }));
