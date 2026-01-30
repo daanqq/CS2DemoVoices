@@ -73,7 +73,7 @@
 }
 
 @theme {
-  --font-play: Play;
+  --font-play: Play, sans-serif;
 }
 
 @theme inline {
