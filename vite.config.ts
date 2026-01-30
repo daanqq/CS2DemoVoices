@@ -10,7 +10,9 @@ export default defineConfig({
   plugins: [
     preact(),
     tailwindcss(),
-    webfontDownload(["https://fonts.googleapis.com/css2?family=Play:wght@400&display=fallback"]),
+    webfontDownload(["https://fonts.googleapis.com/css2?family=Play:wght@400&display=fallback"], {
+      injectAsStyleTag: false,
+    }),
     visualizer({
       filename: "./dist/stats.html",
       gzipSize: true,
